@@ -14,6 +14,5 @@ Path:
 	babelrc file created to transpile es5 => es6
 	npm install --save babel-cli
 
-	add line of 'watch' tp scripts to detect changes in ALL of server folder + in terminal: npm run watch
+	add line of 'watch' to scripts to detect changes in ALL of server folder + in terminal: npm run watch
 
-	
