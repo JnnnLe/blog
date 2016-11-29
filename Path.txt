@@ -1,0 +1,15 @@
+Path: 
+	create init file
+	download all modules + dependecies
+	create gitignore
+
+	create server folder 
+	added server.js
+
+	[Do you want es5 or es6? -Robin
+	6 -Jennifer]
+	Download npm install --save express
+	npm install --save nodemon (just like live-server but for node ...duh!)
+	npm install --save babel-preset-es2015
+
+	babelrc file created to transpile es5 => es6
