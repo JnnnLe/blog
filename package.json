@@ -1,0 +1,37 @@
+{
+  "name": "reactblog",
+  "version": "1.0.0",
+  "description": "This is a blog application. Built using Node Express.js and React.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JnnnLe/blog.git"
+  },
+  "keywords": [
+    "['first",
+    "blog'",
+    "'blog'",
+    "'react'",
+    "'express'",
+    "'thanks",
+    "Robin']"
+  ],
+  "author": "Jennifer Lê",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JnnnLe/blog/issues"
+  },
+  "homepage": "https://github.com/JnnnLe/blog#readme",
+  "dependencies": {
+    "babel": "^6.5.2",
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "jade": "^1.11.0",
+    "nib": "^1.1.2",
+    "react": "^15.4.0",
+    "stylus": "^0.54.5"
+  }
+}
