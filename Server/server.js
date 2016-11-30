@@ -4,6 +4,9 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
+//es5 promise deprecaited in Moongoose, override with es6 Promise
+mongoose.Promise = Promise;
+import Article from './Models/article';
 
 //connect mongoose to db
 //localhost was given in the terminal when downloaded, last portion is the created name for the db = 'blog'
@@ -20,13 +23,19 @@ app.use(bodyParser.json());
 //line 15, just has to be
 app.use(bodyParser.urlencoded({extended: true}));
 
-const articles = [];
-
 
 //REST - Express
 // GET it girl 
 app.get('/articles', (req, res) => {
-	res.send(articles);
+	//get article from db
+	Article.find({}).exec() //rn promise, async call
+	.then((articles) => {
+		//rn articles
+		res.send(articles);
+	})
+	.catch((error) => {
+		res.status(500).send(error);
+	});
 });
 
 //POST
