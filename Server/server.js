@@ -3,6 +3,7 @@
 //import module express server
 import express from 'express';
 import bodyParser from 'body-parser';
+import mongoose from 'mongoose';
 
 //create instance of our app (syntax is specific to express)
 const app = express();
