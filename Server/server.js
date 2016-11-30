@@ -5,6 +5,11 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 
+//connect mongoose to db
+//localhost was given in the terminal when downloaded, last portion is the created name for the db = 'blog'
+//create this file for me mongo database
+mongoose.connect('mongodb://localhost:27017/blog');
+
 //create instance of our app (syntax is specific to express)
 const app = express();
 
