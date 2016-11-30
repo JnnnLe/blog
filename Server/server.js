@@ -28,6 +28,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 // GET it girl 
 app.get('/articles', (req, res) => {
 	//get article from db
+	//articleSchema OPTIONS format gets implemented in find
 	Article.find({}).exec() //rn promise, async call
 	.then((articles) => {
 		//rn articles

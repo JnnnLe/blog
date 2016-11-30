@@ -15,5 +15,14 @@ const articleSchema = mongoose.Schema({
 	tags: [String]
 });
 
+//great OPTION for REMOVING particular(sensitive info) and/or desired format
+articleSchema.options.toJSON = {
+	transform: (docStoreFrmDB, returnObj) => {
+		returnObj.id = returnObj._id;
+		delete returnObj._id;
+		delete returnObj.__v;
+	}
+};
+
 //exporting file for interfile access :) O happy day!
 module.exports = mongoose.model('articles', articleSchema);
