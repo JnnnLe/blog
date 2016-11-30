@@ -40,8 +40,14 @@ app.get('/articles', (req, res) => {
 
 //POST
 app.post('/articles', (req, res) => {
-	articles.push(req.body);
-	res.send('Me done');
+	//add new article to db
+	new Article(req.body).save()
+	.then((article) => { // saved!
+		res.send(article);
+	})
+	.catch((error) => {
+		res.status(500).send(error);
+	});
 });
 
 //start the server and set a port
