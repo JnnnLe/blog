@@ -11,7 +11,7 @@ const articleSchema = mongoose.Schema({
 	title: String,
 	abstract: String,
 	date: { type: Date, default: Date.now },
-	body: Mixed,
+	body: mongoose.Schema.Types.Mixed,
 	tags: [String]
 });
 
