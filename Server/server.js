@@ -25,8 +25,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 
 //REST - Express
-// GET it girl 
-app.get('/articles', (req, res) => {
+// GET an aqrticle
+app.get('/api/articles', (req, res) => {
 	//get article from db
 	//articleSchema OPTIONS format gets implemented in find
 	Article.find({}).exec() //rn promise, async call
@@ -39,12 +39,28 @@ app.get('/articles', (req, res) => {
 	});
 });
 
-//POST
-app.post('/articles', (req, res) => {
+//POST an article
+app.post('/api/articles', (req, res) => {
 	//add new article to db
 	new Article(req.body).save()
 	.then((article) => { // saved!
 		res.send(article);
+	})
+	.catch((error) => {
+		res.status(500).send(error);
+	});
+});
+
+//PUT 
+
+//DELETE
+app.delete('/api/articles/:id', (req, res) => {
+	//get the value from url
+	const id = req.params.id; //params === url (obj) parameter
+	//find the article with that id
+	Article.find({_id: id}).remove().exec(); //delete article
+	.then(() => {
+		res.status(200).send(); //if 200 return then success
 	})
 	.catch((error) => {
 		res.status(500).send(error);
