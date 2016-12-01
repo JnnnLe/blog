@@ -58,7 +58,7 @@ app.delete('/api/articles/:id', (req, res) => {
 	//get the value from url
 	const id = req.params.id; //params === url (obj) parameter
 	//find the article with that id
-	Article.find({_id: id}).remove().exec(); //delete article
+	Article.find({_id: id}).remove().exec() //delete article
 	.then(() => {
 		res.status(200).send(); //if 200 return then success
 	})

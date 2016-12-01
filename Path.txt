@@ -16,3 +16,5 @@ Path:
 
 	add line of 'watch' to scripts to detect changes in ALL of server folder + in terminal: npm run watch
 
+//To start db: mongo
+//then: npm watch to test with postman
