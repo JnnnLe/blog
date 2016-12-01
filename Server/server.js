@@ -54,7 +54,8 @@ app.post('/api/articles', (req, res) => {
 //PUT 
 
 //DELETE
-app.delete('/api/articles/:id', (req, res) => {
+app.delete('/api/articles/:id', (req, res) => { //the ':' is server side indicator, indicating a wild card - but it is not shown in on the client side 
+
 	//get the value from url
 	const id = req.params.id; //params === url (obj) parameter
 	//find the article with that id
