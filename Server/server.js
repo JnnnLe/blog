@@ -54,9 +54,14 @@ app.post('/api/articles', (request, res) => {
 //PUT 
 app.put('/api/articles', (request, res) => {
 	//update an article based on id and set new values
-	Article.update({_id: request.body.id})
-	//mongoose Article
-})
+	Article.update({_id: request.body.id}, request.body).exec() //mongoose Article, exec === execute this action and return a promise
+	.then((article) => {
+		res.send(article);
+	})
+	.catch((error) => {
+		res.status(500).send(error);
+	});
+});
 
 //DELETE
 app.delete('/api/articles/:id', (request, res) => { //the ':' is server side indicator, indicating a wild card - but it is not shown in on the client side 
