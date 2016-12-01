@@ -26,7 +26,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 //REST - Express
 // GET an aqrticle
-app.get('/api/articles', (req, res) => {
+app.get('/api/articles', (request, res) => {
 	//get article from db
 	//articleSchema OPTIONS format gets implemented in find
 	Article.find({}).exec() //rn promise, async call
@@ -40,9 +40,9 @@ app.get('/api/articles', (req, res) => {
 });
 
 //POST an article
-app.post('/api/articles', (req, res) => {
+app.post('/api/articles', (request, res) => {
 	//add new article to db
-	new Article(req.body).save()
+	new Article(request.body).save()
 	.then((article) => { // saved!
 		res.send(article);
 	})
@@ -52,12 +52,16 @@ app.post('/api/articles', (req, res) => {
 });
 
 //PUT 
+app.put('/api/articles', (request, res) => {
+	//update an article based on id and set new values
+	Article.update({_id: request.body.id})
+	//mongoose Article
+})
 
 //DELETE
-app.delete('/api/articles/:id', (req, res) => { //the ':' is server side indicator, indicating a wild card - but it is not shown in on the client side 
-
+app.delete('/api/articles/:id', (request, res) => { //the ':' is server side indicator, indicating a wild card - but it is not shown in on the client side 
 	//get the value from url
-	const id = req.params.id; //params === url (obj) parameter
+	const id = request.params.id; //params === url (obj) parameter
 	//find the article with that id
 	Article.find({_id: id}).remove().exec() //delete article
 	.then(() => {
