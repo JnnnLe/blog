@@ -67,7 +67,13 @@ app.post('/api/articles', (request, res) => {
 	});
 });
 
+//PUT(update) article
 app.put('/api/articles', (request, res) => {
+	//validate the current body with helper fn
+	if (!validateString(request.body.title) || 
+		  !validateString(request.body.body)) {
+		return res.status(400).send('Please make sure you have a title and body in your article.');
+	} 
 
 	//update an article based on id and set new values
 	Article.update({_id: request.body.id}, request.body).exec() //mongoose Article, exec === execute this action and return a promise
