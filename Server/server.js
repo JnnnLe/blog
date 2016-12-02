@@ -39,8 +39,24 @@ app.get('/api/articles', (request, res) => {
 	});
 });
 
-//POST an article
+/////////////////////////////////////////////////////
+									//HELPER FN//
+
+//Creating helper fn for string validation 
+//TODO: maybe put these fn in a utility file?
+const validateString = (str) => {return str && str.trim().length ? true : false};
+
+/////////////////////////////////////////////////////
+
+
+//POST(adding) an article
 app.post('/api/articles', (request, res) => {
+	//make sure the title + body are not empty or empty strings
+	if (!validateString(request.body.title) || 
+		  !validateString(request.body.body)) {
+		return res.status(400).send('Please make sure you have a title and body in your article.');
+	} 
+
 	//add new article to db
 	new Article(request.body).save()
 	.then((article) => { // saved!
@@ -51,8 +67,8 @@ app.post('/api/articles', (request, res) => {
 	});
 });
 
-//PUT 
 app.put('/api/articles', (request, res) => {
+
 	//update an article based on id and set new values
 	Article.update({_id: request.body.id}, request.body).exec() //mongoose Article, exec === execute this action and return a promise
 	.then((article) => {
