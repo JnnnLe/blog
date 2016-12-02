@@ -25,7 +25,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 
 //REST - Express
-// GET an aqrticle
+
+// GET an article
 app.get('/api/articles', (request, res) => {
 	//get article from db
 	//articleSchema OPTIONS format gets implemented in find
@@ -38,6 +39,21 @@ app.get('/api/articles', (request, res) => {
 		res.status(500).send(error);
 	});
 });
+
+//GET specified article using id
+app.get('/api/articles/:id', (request, res) => {
+	//':' is server side indicator, indicating a wild card - but it is not shown in on the client side 
+	//get the value from url
+	const id = request.params.id; //params === url (obj) parameter
+  Article.findOne({_id: id}).exec()
+  .then((article) => {
+  	res.send(article);
+  })
+  .catch((error) => {
+  	res.status(404).send(error);
+  });
+});
+
 
 /////////////////////////////////////////////////////
 									//HELPER FN//
