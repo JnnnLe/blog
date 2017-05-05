@@ -1,7 +1,7 @@
 Path: 
 	create init file
 	download all modules + dependecies
-	create gitignore
+	create .gitignore
 
 	create server folder 
 	added server.js
@@ -20,4 +20,4 @@ Path:
 //then: npm watch to test with postman
 
 TODO: 
-  Validate the article name and body has content
+	Create frontend using React
