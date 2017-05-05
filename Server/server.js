@@ -10,7 +10,7 @@ import Article from './Models/article';
 
 //connect mongoose to db
 //localhost was given in the terminal when downloaded, last portion is the created name for the db = 'blog'
-//create this file for me mongo database
+//create this file for my mongo database
 mongoose.connect('mongodb://localhost:27017/blog');
 
 //create instance of our app (syntax is specific to express)
@@ -108,7 +108,7 @@ app.delete('/api/articles/:id', (request, res) => { //the ':' is server side ind
 	//find the article with that id
 	Article.find({_id: id}).remove().exec() //delete article
 	.then(() => {
-		res.status(200).send(); //if 200 return then success
+		res.status(200).send('Successfully deleted your article titled: ' + request.body.title); //if 200 return then success
 	})
 	.catch((error) => {
 		res.status(500).send(error);
